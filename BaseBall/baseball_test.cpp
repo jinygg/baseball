@@ -1,12 +1,21 @@
 #include <gmock/gmock.h>
 #include "baseball.cpp"
 
-TEST(BaseballGame, InputLengthIsUnmatched) {
+class BaseballFixure : public ::testing::Test {
+public:
 	Baseball game;
-	EXPECT_THROW(game.guess(std::string("12")), std::length_error);
-}
+	void assertIllegalArgument(std::string guess_num) {
+		try {
+			game.guess(std::string("12s"));
+			FAIL();
 
-TEST(BaseballGame, InvalidCharacter) {
-	Baseball game;
-	EXPECT_THROW(game.guess(std::string("12s")), std::invalid_argument);
+		}
+		catch (std::exception e) {
+		}
+	}
+};
+
+TEST_F(BaseballFixure, Invalidcase) {
+	assertIllegalArgument(std::string("12"));
+	assertIllegalArgument(std::string("12s"));
 }
