@@ -10,5 +10,15 @@ public:
 			if (ch < '0' || ch > '9')
 				throw std::invalid_argument("Must be number");
 		}
+
+		if (isDuplicatedNum(guessnum)) {
+			throw std::invalid_argument("Must not have the same number");
+		}
+	}
+	bool isDuplicatedNum(const std::string& guessnum)
+	{
+		return guessnum[0] == guessnum[1]
+			|| guessnum[1] == guessnum[2]
+			|| guessnum[0] == guessnum[2];
 	}
 };

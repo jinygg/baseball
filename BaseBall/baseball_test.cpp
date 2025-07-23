@@ -18,4 +18,5 @@ public:
 TEST_F(BaseballFixure, Invalidcase) {
 	assertIllegalArgument(std::string("12"));
 	assertIllegalArgument(std::string("12s"));
+	assertIllegalArgument(std::string("121"));
 }
