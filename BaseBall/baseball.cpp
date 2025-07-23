@@ -7,7 +7,7 @@ public:
 			throw std::length_error("Must be 3 letter ");
 
 		for (auto ch : guessnum) {
-			if (ch < '0' || ch > '9')
+			if (ch <= '0' || ch <= '9') continue;
 				throw std::invalid_argument("Must be number");
 		}
 
