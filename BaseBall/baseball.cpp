@@ -41,6 +41,15 @@ public:
 		return ball;
 	}
 
+	GuessResult GetResult(std::string question) {
+		GuessResult result;
+		result.strike = CountStrike(question);
+		result.ball = CountBall(question);
+		result.solved = false;
+
+		return result;
+	}
+
 	GuessResult assertIllegalArgument(const std::string& guessnum)
 	{
 		GuessResult result = { true, 3, 0 };
@@ -61,9 +70,7 @@ public:
 			throw std::invalid_argument("Must not have the same number");
 		}
 
-		result.strike = CountStrike(guessnum);
-		result.ball = CountBall(guessnum);
-		result.solved = false;
+		result = GetResult(guessnum);
 
 		return result;
 	}
